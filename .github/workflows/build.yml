@@ -1,0 +1,24 @@
+name: Release DevOps with Docker
+
+on:
+  push:
+    branches: 
+      - main 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ vermashiva12}}
+        password: ${{ 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 }}
+    
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: shivanshu1verma/node:latest
